@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <main class= "container-center padding-3 m-3">
+        <div class="row">
+            <div class= "col-md-4 offset-md-4">
+                <form action="{% url 'task_edit' task.id %}" method="POST" class="card card-body">
+                    <h1>{{task.participacion}}</h1>
+                    {{error}}
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <div class="d-flex container-between md-3">
+                        <h5>Genero:</h5>
+                        <div class="form-check form-check-inline m-1">
+                            <input class="form-check-input mx-auto" type="radio" name="flexRadioDefault" id="flexRadioDefault1" required>
+                            <label class="form-check-label" for="flexRadioDefault1"> <p class="text-center mx-auto">Masculino</p></label> 
+                        </div>
+                        <div class="form-check form-check-inline m-1">
+                                <input class="form-check-input mx-auto" type="radio" name="flexRadioDefault" id="flexRadioDefault2" required>
+                                <label class="form-check-label text-center" for="flexRadioDefault2"><p class="text-center mx-auto">Femenino</p></label>
+                                <div class="invalid-feedback">More example invalid feedback text</div>
+                        </div>
+                        <div class="invalid-feedback">More example invalid feedback text</div>
+                    </div>
+                    <button class="btn btn-warning">
+                        Update
+                    </button>
+                </form>
+            </div>
+        </div>
+    </main>
+{% endblock %}

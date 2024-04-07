@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="container-center padding-3 m-3">
+    <div class="row">
+        <div class= "col-md-5 offset-md-4">
+            <h1 >{{task.participacion}}</h1>
+            <p class="form-control"><span class="container-between"><b>Nombre Completo:</b> </span>{{task.nombre_completo}}</p>
+            <p class="form-control"><span class="container-between"><b>Calle y Numero:</b> </span>{{task.calle_y_numero}}</p>
+            {% if task.masculino %}
+                <p class="form-control"><span class="container-between"><b>Genero:</b> </span>Masculino</p>
+            {% else %}
+                <p class="form-control"><span class="container-between"><b>Genero:</b> </span>Femenino</p>  
+            {% endif %}
+            <p class="form-control"><span class="container-between"><b>Colonia:</b> </span>{{task.colonia}}</p>
+            <p class="form-control"><span class="container-between"><b>C.P:</b> </span>{{task.c_p}}</p>
+            <p class="form-control"><span class="container-between"><b>Municipio:</b> </span>{{task.municipio}}</p>
+            <p class="form-control"><span class="container-between"><b>Estado:</b> </span>{{task.estado}}</p>
+            <p class="form-control"><span class="container-between"><b>Seccion:</b> </span>{{task.num_seccion}}</p>
+            <p class="form-control"><span class="container-between"><b>Casilla :</b> </span>{{task.num_casilla}}</p>
+            <p class="form-control"><span class="container-between"><b>Enlace :</b> </span>{{task.nombre_enlace}}</p>
+            <p class="form-control"><span class="container-between"><b>Comentarios :</b> </span>{{task.description}}</p>
+            <p class="form-control"><span class="container-between"><b>Fecha:</b> </span>{{task.datecompleted|date:'j M Y:i'}}</p>
+            <p class="form-control"><span class="container-between"><b>Usuario:</b> </span>{{task.user.username}}</p>
+            {% if user.is_superuser %}
+                <a href="{% url 'task_edit' task.id %}" class="btn btn-primary">
+                    <button class="btn btn-primary position-relative">
+                        Edit
+                    </button>
+                </a>
+                <form action="{% url 'complete_task' task.id %}" method="POST" class="card card-body">
+                    {% csrf_token %}
+                    <button class="btn btn-primary position-relative">
+                        Complete
+                    </button>
+            {% else %}
+                    <a href="{% url 'tasks' %}">
+                        <button>
+                            back
+                        </button>
+                    </a>
+                </form>
+            {% endif %}
+        </div>
+    </div>
+</main>  
+{% endblock %}

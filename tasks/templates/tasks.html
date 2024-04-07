@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="fw-bold text-center mt-5 display-2">Registros</h1> 
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Open this select menu</option>
+                    <ul class="list-group py-4">
+                        {% for task in tasks %}
+                        <li class="list-group-item">
+                            <a  href="{% url 'task_detail' task.id %}">
+                                <h1 class="fw-bold">{{task.nombre_completo}}<h1>
+                                {{task.user.username}}
+                            </a>
+                        </li>   
+                        {% endfor %}
+                    </ul>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+            </select>
+        </div>
+    </div>
+</main>
+{% endblock %}

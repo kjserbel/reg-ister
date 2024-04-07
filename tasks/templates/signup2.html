@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registros Realizados</title>
+</head>
+<body>
+    <h1>Personas Registradas</h1>
+    <table>
+        <caption>Resgitros Disponibles</caption>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Domicilio</th>
+                <th>Edad</th>
+                <th>Género</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in tasks %}
+            <tr>
+                <td>{{task.nombre_completo}}</td>
+                <td>{{task.calle_y_numero}}</td>
+                <td>{{task.colonia}}</td>
+                <td>{{task.genero}}</td>
+                <td><a href="#">Ver Detalles</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
